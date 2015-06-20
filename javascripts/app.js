@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   $document.on('flatdoc:ready', function() {
     $('.content ul:first').remove();
+    $window.scrollTop(0);
   });
 
   (function($) {
@@ -12,6 +13,7 @@ $(document).ready(function() {
 
      $document.on('flatdoc:ready', function() {
        $('.menu a').anchorjump();
+       $.anchorjump($(location).attr('hash'))
      });
 
     $(function() {
@@ -51,7 +53,7 @@ $(document).ready(function() {
 //     $.anchorjump('#bank-deposit', options);
 (function($) {
   var defaults = {
-    'speed': 500,
+    'speed': 1000,
     'offset': 0,
     'for': null,
     'parent': null
