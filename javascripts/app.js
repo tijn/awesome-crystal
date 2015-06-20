@@ -79,6 +79,8 @@ $(document).ready(function() {
     }
   };
 
+  var current_active = null;
+
   // Jump to a given area.
   $.anchorjump = function(href, options) {
     options = $.extend({}, defaults, options);
@@ -105,6 +107,11 @@ $(document).ready(function() {
 
     $('html, body').animate({ scrollTop: top }, options.speed);
     $('body').trigger('anchor', href);
+
+    // Update active anchor
+    $(current_active).removeClass('active');
+    current_active = "[href=" + href + "]";
+    $(current_active).addClass('active')
 
     // Add the location hash via pushState.
     if (window.history.pushState) {
